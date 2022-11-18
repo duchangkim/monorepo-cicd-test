@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist
-          path: dist/packages/
+          path: dist/packages
 
       - name: << Step results >>
         run: echo "빌드가 완료되었습니다. 빌드된 앱 = ${{ steps.checkForAffected.outputs.affectedApps }}"
@@ -90,7 +90,7 @@ jobs:
       - name: << Download artifact >>
         uses: actions/download-artifact@v1
         with:
-          name: dist
+          name: ${{ SOURCE_DIR }}
           
       - name: << Deploy to S3 >>
         uses: jakejarvis/s3-sync-action@master
